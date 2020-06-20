@@ -1,5 +1,7 @@
 package com.lysachenko;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,22 +23,15 @@ public class Main {
         System.out.print("Each element of array changed on his square: ");
         showArray(changeElementsOnTheirSquare(intArray));
 
-        String[][] stringArray = new String[3][3];
-        stringArray[0][0] = "dia";
-        stringArray[0][1] = "qwe";
-        stringArray[0][2] = "sda";
-        stringArray[1][0] = "fhg";
-        stringArray[1][1] = "go";
-        stringArray[1][2] = "wer";
-        stringArray[2][0] = "opi";
-        stringArray[2][1] = "nbt";
-        stringArray[2][2] = "nal";
+        String[][] stringMatrix = new String[5][5];
+
+        fillStringMatrix(stringMatrix);
 
         System.out.println("\n\nSource string matrix: ");
-        showStringMatrix(stringArray);
+        showStringMatrix(stringMatrix);
 
         System.out.println("\nString on main diagonal is: "
-                + showStringWhichContainsOfStringsOnMainDiagonal(stringArray));
+                + showStringWhichContainsOfStringsOnMainDiagonal(stringMatrix));
 
         int[] sourceArray = {3, 2, 3, 1, 4, 2, 8, 3};
 
@@ -48,6 +43,20 @@ public class Main {
         System.out.print("\nArray after replace duplicate with 0: ");
         showArray(sourceArray);
 
+    }
+
+    public static void fillStringMatrix(String[][] stringArray) {
+
+        char[] randomChars = new char[3];
+        Random r = new Random();
+        for (int i = 0; i < stringArray.length; i++) {
+            for (int j = 0; j < stringArray[i].length; j++) {
+                for (int k = 0; k < randomChars.length; k++) {
+                    randomChars[k] = (char) (r.nextInt('z' - 'a' + 1) + (r.nextBoolean() ? 'a' : 'A'));
+                }
+                stringArray[i][j] = new String(randomChars);
+            }
+        }
     }
 
     public static void replaceDuplicates(int[] array) {
