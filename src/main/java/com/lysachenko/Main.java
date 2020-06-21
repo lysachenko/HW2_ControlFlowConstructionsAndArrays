@@ -21,7 +21,7 @@ public class Main {
         showArray(sortArrayByDescending(intArray));
         System.out.println("\nSum of elements in integer array = " + calculateSumOfArray(intArray));
         System.out.print("Each element of array changed on his square: ");
-        showArray(changeElementsOnTheirSquare(intArray));
+        showArray(squareElements(intArray));
 
         String[][] stringMatrix = new String[5][5];
 
@@ -31,7 +31,7 @@ public class Main {
         showStringMatrix(stringMatrix);
 
         System.out.println("\nString on main diagonal is: "
-                + showStringWhichContainsOfStringsOnMainDiagonal(stringMatrix));
+                + showMainDiagonalElements(stringMatrix));
 
         int[] sourceArray = {3, 2, 3, 1, 4, 2, 8, 3};
 
@@ -42,7 +42,6 @@ public class Main {
 
         System.out.print("\nArray after replace duplicate with 0: ");
         showArray(sourceArray);
-
     }
 
     public static void fillStringMatrix(String[][] stringArray) {
@@ -80,7 +79,7 @@ public class Main {
         }
     }
 
-    public static int[] changeElementsOnTheirSquare(int[] array) {
+    public static int[] squareElements(int[] array) {
 
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i] * array[i];
@@ -149,15 +148,15 @@ public class Main {
 
     public static int findMaxElement(int[] array) {
 
-        int minElement = array[0];
+        int maxElement = array[0];
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i] > minElement) {
-                minElement = array[i];
+            if (array[i] > maxElement) {
+                maxElement = array[i];
             }
         }
 
-        return minElement;
+        return maxElement;
     }
 
     public static void showArray(int[] array) {
@@ -165,7 +164,6 @@ public class Main {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
-
     }
 
     public static void fillIntArray(int[] array) {
@@ -173,10 +171,9 @@ public class Main {
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 100);
         }
-
     }
 
-    public static String showStringWhichContainsOfStringsOnMainDiagonal(String[][] stringArray) {
+    public static String showMainDiagonalElements(String[][] stringArray) {
 
         String str = "";
 
@@ -190,5 +187,4 @@ public class Main {
 
         return str;
     }
-
 }
